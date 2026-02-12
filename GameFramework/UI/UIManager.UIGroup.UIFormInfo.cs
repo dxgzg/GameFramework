@@ -19,12 +19,14 @@ namespace GameFramework.UI
                 private IUIForm m_UIForm;
                 private bool m_Paused;
                 private bool m_Covered;
+                private bool m_Hidden;
 
                 public UIFormInfo()
                 {
                     m_UIForm = null;
                     m_Paused = false;
                     m_Covered = false;
+                    m_Hidden = false;
                 }
 
                 public IUIForm UIForm
@@ -59,6 +61,18 @@ namespace GameFramework.UI
                     }
                 }
 
+                public bool Hidden
+                {
+                    get
+                    {
+                        return m_Hidden;
+                    }
+                    set
+                    {
+                        m_Hidden = value;
+                    }
+                }
+
                 public static UIFormInfo Create(IUIForm uiForm)
                 {
                     if (uiForm == null)
@@ -70,6 +84,7 @@ namespace GameFramework.UI
                     uiFormInfo.m_UIForm = uiForm;
                     uiFormInfo.m_Paused = true;
                     uiFormInfo.m_Covered = true;
+                    uiFormInfo.m_Hidden = true;
                     return uiFormInfo;
                 }
 
@@ -78,6 +93,7 @@ namespace GameFramework.UI
                     m_UIForm = null;
                     m_Paused = false;
                     m_Covered = false;
+                    m_Hidden = false;
                 }
             }
         }

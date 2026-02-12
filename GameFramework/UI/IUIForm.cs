@@ -110,6 +110,16 @@ namespace GameFramework.UI
         void OnReveal();
 
         /// <summary>
+        /// 界面隐藏。
+        /// </summary>
+        void OnHide();
+
+        /// <summary>
+        /// 界面隐藏恢复。
+        /// </summary>
+        void OnShow();
+
+        /// <summary>
         /// 界面激活。
         /// </summary>
         /// <param name="userData">用户自定义数据。</param>

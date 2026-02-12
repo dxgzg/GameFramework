@@ -351,6 +351,12 @@ namespace GameFramework.UI
                     uiForm.OnCover();
                 }
 
+                if (!uiFormInfo.Hidden)
+                {
+                    uiFormInfo.Hidden = true;
+                    uiForm.OnHide();
+                }
+
                 if (!uiFormInfo.Paused)
                 {
                     uiFormInfo.Paused = true;
@@ -417,6 +423,16 @@ namespace GameFramework.UI
                             }
                         }
 
+                        if (!current.Value.Hidden)
+                        {
+                            current.Value.Hidden = true;
+                            current.Value.UIForm.OnHide();
+                            if (current.Value == null)
+                            {
+                                return;
+                            }
+                        }
+
                         if (!current.Value.Paused)
                         {
                             current.Value.Paused = true;
@@ -455,6 +471,16 @@ namespace GameFramework.UI
                                     return;
                                 }
                             }
+
+                            if (!current.Value.Hidden)
+                            {
+                                current.Value.Hidden = true;
+                                current.Value.UIForm.OnHide();
+                                if (current.Value == null)
+                                {
+                                    return;
+                                }
+                            }
                         }
                         else
                         {
@@ -462,6 +488,16 @@ namespace GameFramework.UI
                             {
                                 current.Value.Covered = false;
                                 current.Value.UIForm.OnReveal();
+                                if (current.Value == null)
+                                {
+                                    return;
+                                }
+                            }
+
+                            if (current.Value.Hidden)
+                            {
+                                current.Value.Hidden = false;
+                                current.Value.UIForm.OnShow();
                                 if (current.Value == null)
                                 {
                                     return;
